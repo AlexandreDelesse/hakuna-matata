@@ -1,0 +1,23 @@
+.foodstuffCard {
+  background-color: #d1d1d1;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  margin: 10px;
+}
+
+.foodstuff-close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 50%);
+  cursor: pointer;
+}
+
+.foodstuffCard-title {
+  font-size: large;
+  font-weight: bold;
+}
+
+.foodstuffCard-content {
+}

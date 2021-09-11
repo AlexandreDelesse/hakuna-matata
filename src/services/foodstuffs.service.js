@@ -17,7 +17,7 @@ const createFoodstuff = async (foodstuff) => {
 const getAllFoodstuffs = async () => {
   try {
     const result = await instance.get('/foodstuffs')
-    console.log(result.data)
+    return result.data;
   } catch (err) {
     console.log(err)
   }
@@ -26,7 +26,7 @@ const getAllFoodstuffs = async () => {
 const deleteFoodstuffById = async (foodstuffId) => {
   try {
     const result = await instance.delete(`/foodstuffs/${foodstuffId}`)
-    console.log(result.data)
+    return result
   } catch (err) {
     console.log(err)
   }

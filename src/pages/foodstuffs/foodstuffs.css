@@ -1,0 +1,9 @@
+.foodstuffAddIcon {
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    background-color: rgb(34, 131, 123);
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+}

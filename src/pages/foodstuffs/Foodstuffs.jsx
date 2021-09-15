@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { MdAdd } from 'react-icons/md'
+// import { MdAdd } from 'react-icons/md'
 
 import FoodstuffCard from '../../components/foodstuffCard/FoodstuffCard'
+import FoodstuffForm from '../../components/foodstuff/FoodstuffForm'
 
 import * as FoodstuffService from '../../services/foodstuffs.service'
 import './foodstuffs.css'
 
 export default function Foodstuffs() {
   const [inputFilter, setInputFilter] = useState('')
+  const [isCreatingFoodstuff, setIsCreationFoodstuff] = useState(false)
+
   const queryClient = useQueryClient()
   const history = useHistory()
   const query = useQuery('foodstuffs', FoodstuffService.getAllFoodstuffs)
@@ -31,18 +34,28 @@ export default function Foodstuffs() {
   }
 
   const deleteFoodstuff = async (foodstuffId) => {
-    mutationDelete.mutate(foodstuffId)
+    try {
+      await mutationDelete.mutateAsync(foodstuffId)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
-  const createFoodstuff = () => {
-    mutationCreate.mutate({
-      label: 'my thirth foodstuff',
-      trademark: 'an other awesome trademark',
-      unit: '100g',
-      protein: 12,
-      glucid: 32,
-      lipid: 4,
-    })
+  const createFoodstuff = async (foodstuff) => {
+    try {
+      await mutationCreate.mutateAsync(foodstuff)
+      setIsCreationFoodstuff(false)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleOnShowForm = () => {
+    setIsCreationFoodstuff(true)
+  }
+
+  const handleOnHideForm = () => {
+    setIsCreationFoodstuff(false)
   }
 
   const handleOnInputChange = (e) => {
@@ -59,33 +72,52 @@ export default function Foodstuffs() {
   }
 
   return (
-    <div>
+    <div className="p-4">
       <button
-        className="btn btn-primary m-3"
+        className="btn btn-primary"
         type="button"
         onClick={handleOnBackButtonClick}
       >
-        go back home
+        Home
       </button>
 
-      <button type="button" onClick={createFoodstuff}>
-        add foodstuff
-      </button>
+      <div className="text-center display-5 my-4">foodstuffs</div>
 
-      <div className="text-center display-5 m-5">foodstuffs</div>
-      <div className="d-flex justify-content-between m-5">
-        <input type="text" value={inputFilter} onChange={handleOnInputChange} />
-
-        <MdAdd className="foodstuffAddIcon" />
-      </div>
-      {query.data &&
-        query.data.map((foodstuff) => (
-          <FoodstuffCard
-            key={foodstuff.id}
-            foodstuff={foodstuff}
-            onDelete={deleteFoodstuff}
+      {!isCreatingFoodstuff && (
+        <div className="d-flex justify-content-between my-5">
+          <input
+            type="text"
+            value={inputFilter}
+            onChange={handleOnInputChange}
           />
-        ))}
+
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={handleOnShowForm}
+          >
+            New
+          </button>
+        </div>
+      )}
+      <div>
+        {!isCreatingFoodstuff &&
+          query.data &&
+          query.data.map((foodstuff) => (
+            <FoodstuffCard
+              key={foodstuff.id}
+              foodstuff={foodstuff}
+              classname="my-3"
+              onDelete={deleteFoodstuff}
+            />
+          ))}
+        {isCreatingFoodstuff && (
+          <FoodstuffForm
+            onCreate={createFoodstuff}
+            onCancel={handleOnHideForm}
+          />
+        )}
+      </div>
     </div>
   )
 }

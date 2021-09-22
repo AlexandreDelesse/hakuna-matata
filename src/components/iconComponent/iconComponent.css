@@ -1,0 +1,18 @@
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 70px;
+  height: 70px;
+  background-color: #f1f1f1;
+  border-radius: 7px;
+}
+
+.icon:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

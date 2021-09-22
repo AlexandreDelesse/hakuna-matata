@@ -8,9 +8,10 @@ import FoodstuffForm from '../../components/foodstuff/FoodstuffForm'
 
 import * as FoodstuffService from '../../services/foodstuffs.service'
 import './foodstuffs.css'
+import SearchBar from '../../components/searcBar/SearchBar'
 
 export default function Foodstuffs() {
-  const [inputFilter, setInputFilter] = useState('')
+  const [dataFiltered, setDataFiltered] = useState([])
   const [isCreatingFoodstuff, setIsCreationFoodstuff] = useState(false)
 
   const queryClient = useQueryClient()
@@ -58,13 +59,22 @@ export default function Foodstuffs() {
     setIsCreationFoodstuff(false)
   }
 
-  const handleOnInputChange = (e) => {
-    const value = e.target.value
-    setInputFilter(value)
+  const handleOnFilterReturns = (newData) => {
+    setDataFiltered(newData)
   }
 
+  useEffect(() => {
+    if (query.isSuccess) {
+      setDataFiltered(query.data)
+    }
+  }, [query.data])
+
   if (query.isLoading) {
-    return <div>loading...</div>
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        loading...
+      </div>
+    )
   }
 
   if (query.isError) {
@@ -85,10 +95,10 @@ export default function Foodstuffs() {
 
       {!isCreatingFoodstuff && (
         <div className="d-flex justify-content-between my-5">
-          <input
-            type="text"
-            value={inputFilter}
-            onChange={handleOnInputChange}
+          <SearchBar
+            items={query.data}
+            onItemsReturns={handleOnFilterReturns}
+            keyToSearch="label"
           />
 
           <button
@@ -102,8 +112,7 @@ export default function Foodstuffs() {
       )}
       <div>
         {!isCreatingFoodstuff &&
-          query.data &&
-          query.data.map((foodstuff) => (
+          dataFiltered.map((foodstuff) => (
             <FoodstuffCard
               key={foodstuff.id}
               foodstuff={foodstuff}

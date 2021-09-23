@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import FoodstuffCard from '../../components/foodstuffCard/FoodstuffCard'
 import FoodstuffForm from '../../components/foodstuff/FoodstuffForm'
+import BackButton from '../../components/buttons/backButtons/BackButton'
 
 import * as FoodstuffService from '../../services/foodstuffs.service'
 import './foodstuffs.css'
@@ -83,13 +84,8 @@ export default function Foodstuffs() {
 
   return (
     <div className="p-4">
-      <button
-        className="btn btn-primary"
-        type="button"
-        onClick={handleOnBackButtonClick}
-      >
-        Home
-      </button>
+      
+      <BackButton onClick={handleOnBackButtonClick} label='Back to menu' />
 
       <div className="text-center display-5 my-4">foodstuffs</div>
 

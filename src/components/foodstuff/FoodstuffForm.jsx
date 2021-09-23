@@ -31,76 +31,67 @@ function FoodstuffForm(props) {
 
   return (
     <div>
-      <div className="d-flex justify-content-between">
-        <div className="mb-3 w-100">
-          <label className="form-label">Label</label>
-          <input
-            type="text"
-            className="form-control"
-            name="label"
-            value={foodstuff.label}
-            onChange={handleOnInputChanges}
-          />
-        </div>
-        <div className="mb-3 w-100 mx-5">
-          <label className="form-label">Trademark</label>
-          <input
-            type="text"
-            className="form-control"
-            name="trademark"
-            value={foodstuff.trademark}
-            onChange={handleOnInputChanges}
-          />
-        </div>
-        <div className="mb-3 w-100">
-          <label className="form-label">Unit</label>
-          <input
-            type="text"
-            className="form-control"
-            name="unit"
-            value={foodstuff.unit}
-            onChange={handleOnInputChanges}
-          />
-        </div>
-      </div>
-      <div className="d-flex justify-content-between">
-        <div className="mb-3 w-100">
-          <label className="form-label">Protein</label>
-          <input
-            type="number"
-            className="form-control"
-            name="protein"
-            value={foodstuff.protein}
-            onChange={handleOnInputChanges}
-          />
-        </div>
-        <div className="mb-3 w-100 mx-5">
-          <label className="form-label">Glucid</label>
-          <input
-            type="number"
-            className="form-control"
-            name="glucid"
-            value={foodstuff.glucid}
-            onChange={handleOnInputChanges}
-          />
-        </div>
-        <div className="mb-3 w-100">
-          <label className="form-label">Lipid</label>
-          <input
-            type="number"
-            className="form-control"
-            name="lipid"
-            value={foodstuff.lipid}
-            onChange={handleOnInputChanges}
-          />
+      <div className="d-flex flex-column justify-content-between col-6 offset-3">
+        <label className="form-label">Label</label>
+        <input
+          type="text"
+          className="form-control"
+          name="label"
+          value={foodstuff.label}
+          onChange={handleOnInputChanges}
+        />
+
+        <label className="form-label">Trademark</label>
+        <input
+          type="text"
+          className="form-control"
+          name="trademark"
+          value={foodstuff.trademark}
+          onChange={handleOnInputChanges}
+        />
+
+        <label className="form-label">Unit</label>
+        <input
+          type="text"
+          className="form-control"
+          name="unit"
+          value={foodstuff.unit}
+          onChange={handleOnInputChanges}
+        />
+
+        <label className="form-label">Protein</label>
+        <input
+          type="number"
+          className="form-control"
+          name="protein"
+          value={foodstuff.protein}
+          onChange={handleOnInputChanges}
+        />
+        <label className="form-label">Glucid</label>
+        <input
+          type="number"
+          className="form-control"
+          name="glucid"
+          value={foodstuff.glucid}
+          onChange={handleOnInputChanges}
+        />
+        <label className="form-label">Lipid</label>
+        <input
+          type="number"
+          className="form-control"
+          name="lipid"
+          value={foodstuff.lipid}
+          onChange={handleOnInputChanges}
+        />
+        <div className='my-3'>
+          <button className="btn btn-success me-4 w-25" onClick={handleOnCreateFoodstuff}>
+            Create
+          </button>
+          <button className="btn btn-secondary w-25" onClick={onCancel}>
+            Cancel
+          </button>
         </div>
       </div>
-      <button className="btn btn-secondary" onClick={onCancel}>
-        Cancel
-      </button>
-      <button className="btn btn-success" onClick={handleOnCreateFoodstuff}>
-        Create
-      </button>
     </div>
   )
 }

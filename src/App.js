@@ -8,26 +8,30 @@ import Foodstuffs from './pages/foodstuffs/Foodstuffs'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import Activities from './pages/activities/Activities'
 
 function App() {
   const queryClient = new QueryClient()
 
   return (
-    <Router>
-      <div>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
 
-          <Route path="/foodstuffs">
-            <QueryClientProvider client={queryClient}>
+            <Route path="/foodstuffs">
               <Foodstuffs />
-            </QueryClientProvider>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+            </Route>
+            <Route path="/activities">
+              <Activities />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </QueryClientProvider>
   )
 }
 

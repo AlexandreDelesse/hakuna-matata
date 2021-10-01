@@ -1,13 +1,9 @@
-import axios from 'axios'
+import api from './api.config'
 
-const instance = axios.create({
-  baseURL: 'http://localhost:5001/api',
-  timeout: 1000,
-})
 
 const createActivity = async (activity) => {
   try {
-    const result = await instance.post('/activities', activity)
+    const result = await api.post('/activities', activity)
     console.log(result.data)
   } catch (err) {
     console.log(err)
@@ -16,7 +12,7 @@ const createActivity = async (activity) => {
 
 const getAllActivities = async () => {
   try {
-    const result = await instance.get('/activities')
+    const result = await api.get('/activities')
     return result.data;
   } catch (err) {
     console.log(err)
@@ -25,7 +21,7 @@ const getAllActivities = async () => {
 
 const deleteActivityById = async (activityId) => {
   try {
-    const result = await instance.delete(`/activities/${activityId}`)
+    const result = await api.delete(`/activities/${activityId}`)
     return result
   } catch (err) {
     console.log(err)

@@ -66,7 +66,7 @@ function Activities(props) {
         /> */}
         {queryActivity.isSuccess &&
           queryActivity.data.map((activity) => (
-            <ActivityCard activity={activity} />
+            <ActivityCard key={activity.id} activity={activity} />
           ))}
 
         <button type="button" className="btn btn-success" onClick={() => {}}>

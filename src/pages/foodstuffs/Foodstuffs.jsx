@@ -84,26 +84,24 @@ export default function Foodstuffs() {
 
   return (
     <div className="p-4">
-      
-      <BackButton onClick={handleOnBackButtonClick} label='Back to menu' />
+      <BackButton onClick={handleOnBackButtonClick} label="Back to menu" />
 
       <div className="text-center display-5 my-4">foodstuffs</div>
 
       {!isCreatingFoodstuff && (
-        <div className="d-flex justify-content-between my-5">
+        <div className="d-flex justify-content my-5">
+          <button
+            type="button"
+            className="btn btn-success me-3"
+            onClick={handleOnShowForm}
+          >
+            New
+          </button>
           <SearchBar
             items={query.data}
             onItemsReturns={handleOnFilterReturns}
             keyToSearch="label"
           />
-
-          <button
-            type="button"
-            className="btn btn-success"
-            onClick={handleOnShowForm}
-          >
-            New
-          </button>
         </div>
       )}
       <div>

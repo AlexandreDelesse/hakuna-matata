@@ -17,7 +17,6 @@ function FoodstuffForm(props) {
 
   const handleOnInputChanges = (e) => {
     const { name, value } = e.target
-    console.log(name)
     setFoodstuff({ ...foodstuff, [name]: value })
   }
 

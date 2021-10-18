@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import BackButton from '../../components/buttons/backButtons/BackButton'
@@ -12,11 +12,16 @@ import {
   getAllActivities,
   deleteActivityById,
 } from '../../services/activities.service'
+import { getAllExercices } from '../../services/exercices.service'
+import ActivityForm from '../../components/activity/ActivityForm'
 
 function Activities(props) {
   const queryClient = useQueryClient()
   const history = useHistory()
   const queryActivity = useQuery('activities', getAllActivities)
+  const queryExercice = useQuery('exercices', getAllExercices)
+
+  const [showForm, setShowForm] = useState(false)
 
   const mutationCreate = useMutation(createActivity, {
     onSuccess: () => {
@@ -34,22 +39,33 @@ function Activities(props) {
     history.push('/')
   }
 
-  useEffect(() => {
-    if (queryActivity.isSuccess) {
-      console.log(queryActivity.data)
+  const handleOnToggleAddForm = () => {
+    setShowForm(!showForm)
+  }
+
+  const handleOnDeleteActivity = async (activityId) => {
+    console.log(activityId)
+    try {
+      await mutationDelete.mutateAsync(activityId)
+    } catch (err) {
+      console.log(err)
     }
-  }, [queryActivity])
+  }
+
+  const handleOnCreateActivity = async (activity) => {
+    try {
+      await mutationCreate.mutateAsync(activity)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   if (queryActivity.isLoading) {
-    return (
-      <div className="d-flex justify-content-center align-items-center">
-        loading...
-      </div>
-    )
+    return <div>This is a spinner</div>
   }
 
   if (queryActivity.isError) {
-    return <div>An error occured</div>
+    return <div>An error occured </div>
   }
 
   return (
@@ -58,20 +74,26 @@ function Activities(props) {
 
       <div className="text-center display-5 my-4">foodstuffs</div>
 
-      <div className="d-flex justify-content-between my-5">
+      <div className="d-flex flex-column justify-content-between my-5">
         {/* <SearchBar
           items={queryActivity.data}
           onItemsReturns={handleOnFilterReturns}
           keyToSearch="label"
         /> */}
-        {queryActivity.isSuccess &&
-          queryActivity.data.map((activity) => (
-            <ActivityCard key={activity.id} activity={activity} />
-          ))}
 
-        <button type="button" className="btn btn-success" onClick={() => {}}>
-          New
-        </button>
+        {queryExercice.isSuccess && (
+          <ActivityForm
+            onCancel={handleOnToggleAddForm}
+            onCreate={handleOnCreateActivity}
+            exercices={queryExercice.data}
+          />
+        )}
+
+        {queryActivity.isSuccess &&
+          !showForm &&
+          queryActivity.data.map((activity) => (
+            <ActivityCard key={activity.id} activity={activity} onDelete={handleOnDeleteActivity} />
+          ))}
       </div>
     </div>
   )

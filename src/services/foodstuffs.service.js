@@ -3,7 +3,6 @@ import api from './api.config'
 const createFoodstuff = async (foodstuff) => {
   try {
     const result = await api.post('/foodstuffs', foodstuff)
-    console.log(result.data)
   } catch (err) {
     console.log(err)
   }
@@ -12,9 +11,10 @@ const createFoodstuff = async (foodstuff) => {
 const getAllFoodstuffs = async () => {
   try {
     const result = await api.get('/foodstuffs')
-    return result.data;
+    return result.data
   } catch (err) {
     console.log(err)
+    return []
   }
 }
 

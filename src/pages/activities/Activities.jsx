@@ -14,13 +14,16 @@ import {
 } from '../../services/activities.service'
 import { getAllExercices } from '../../services/exercices.service'
 import ActivityForm from '../../components/activity/ActivityForm'
+import { useSelector } from 'react-redux'
+import { getUserId } from '../../store'
 
 function Activities(props) {
   const queryClient = useQueryClient()
   const history = useHistory()
-  const queryActivity = useQuery('activities', getAllActivities)
+  const userId = useSelector(getUserId)
+  const queryActivity = useQuery(['activities', userId], getAllActivities)
   const queryExercice = useQuery('exercices', getAllExercices)
-
+ 
   const [showForm, setShowForm] = useState(false)
 
   const mutationCreate = useMutation(createActivity, {
@@ -36,7 +39,7 @@ function Activities(props) {
   })
 
   const handleOnBackButtonClick = () => {
-    history.push('/')
+    history.push('/home')
   }
 
   const handleOnToggleAddForm = () => {
@@ -44,7 +47,6 @@ function Activities(props) {
   }
 
   const handleOnDeleteActivity = async (activityId) => {
-    console.log(activityId)
     try {
       await mutationDelete.mutateAsync(activityId)
     } catch (err) {

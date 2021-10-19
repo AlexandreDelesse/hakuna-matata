@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
+import { getUserId } from '../../store'
 
 function ActivityForm(props) {
   const { onCreate, exercices } = props
 
+  const userId = useSelector(getUserId)
+
   const [activity, setActivity] = useState({
     exerciceId: '',
+    userId,
     series: { repetitions: '', poid: '' },
   })
 
@@ -20,8 +25,8 @@ function ActivityForm(props) {
   }
 
   const handleOnCreateActivity = () => {
-    const { exerciceId, serie } = activity
-    if (!exerciceId || !serie.repetitions || !serie.poid) {
+    const { exerciceId, series } = activity
+    if (!exerciceId || !series.repetitions || !series.poid) {
       return
     }
     onCreate(activity)
@@ -52,7 +57,7 @@ function ActivityForm(props) {
           type="text"
           className="form-control"
           name="repetitions"
-          value={activity.serie.repetitions}
+          value={activity.series.repetitions}
           onChange={handleOnInputSerieChange}
         />
       </div>
@@ -63,7 +68,7 @@ function ActivityForm(props) {
           type="text"
           className="form-control"
           name="poid"
-          value={activity.serie.poid}
+          value={activity.series.poid}
           onChange={handleOnInputSerieChange}
         />
       </div>

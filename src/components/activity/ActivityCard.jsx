@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 function ActivityCard(props) {
   const { activity, onDelete } = props
-  console.log(activity)
 
   const handleOnDelete = () => {
     onDelete(activity.id)
@@ -12,7 +11,7 @@ function ActivityCard(props) {
     <div className="m-2 border">
       <div>{activity.exercice.label}</div>
       <div>
-        {activity.series.map((serie) => (
+        {activity.series && activity.series.map((serie) => (
           <div>
             repetitions: {serie.repetitions}
             <div>poid : {serie.poid}</div>

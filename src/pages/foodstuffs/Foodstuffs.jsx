@@ -32,7 +32,7 @@ export default function Foodstuffs() {
   })
 
   const handleOnBackButtonClick = () => {
-    history.push('/')
+    history.push('/home')
   }
 
   const deleteFoodstuff = async (foodstuffId) => {

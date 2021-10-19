@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'HakunaMatata';
+    src: local("HakunaMatata") , url("../../fonts/HakunaMatata.ttf") format('truetype');
+  }
+  
+  .homeTitle { 
+    font-family: "HakunaMatata";
+  }

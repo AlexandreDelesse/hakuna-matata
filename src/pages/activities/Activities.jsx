@@ -17,13 +17,15 @@ import ActivityForm from '../../components/activity/ActivityForm'
 import { useSelector } from 'react-redux'
 import { getUserId } from '../../store'
 
+import './activities.css'
+
 function Activities(props) {
   const queryClient = useQueryClient()
   const history = useHistory()
   const userId = useSelector(getUserId)
   const queryActivity = useQuery(['activities', userId], getAllActivities)
   const queryExercice = useQuery('exercices', getAllExercices)
- 
+
   const [showForm, setShowForm] = useState(false)
 
   const mutationCreate = useMutation(createActivity, {
@@ -91,11 +93,21 @@ function Activities(props) {
           />
         )}
 
-        {queryActivity.isSuccess &&
+        <div className="activityContainer scrollContainer mt-3">
+          {queryActivity.isSuccess &&
           !showForm &&
-          queryActivity.data.map((activity) => (
-            <ActivityCard key={activity.id} activity={activity} onDelete={handleOnDeleteActivity} />
-          ))}
+          queryActivity.data.length > 0 ? (
+            queryActivity.data.map((activity) => (
+              <ActivityCard
+                key={activity.id}
+                activity={activity}
+                onDelete={handleOnDeleteActivity}
+              />
+            ))
+          ) : (
+            <div className='text-center'>No activities</div>
+          )}
+        </div>
       </div>
     </div>
   )

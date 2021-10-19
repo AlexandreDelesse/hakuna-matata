@@ -29,6 +29,7 @@ function ActivityForm(props) {
     if (!exerciceId || !series.repetitions || !series.poid) {
       return
     }
+    setActivity({...activity, series: { repetitions: '', poid: ''}})
     onCreate(activity)
   }
 
@@ -54,7 +55,7 @@ function ActivityForm(props) {
       <div className="d-flex flex-column">
         <label className="form-label">Repetitions</label>
         <input
-          type="text"
+          type="number"
           className="form-control"
           name="repetitions"
           value={activity.series.repetitions}
@@ -65,7 +66,7 @@ function ActivityForm(props) {
       <div className="d-flex flex-column">
         <label className="form-label">poid</label>
         <input
-          type="text"
+          type="number"
           className="form-control"
           name="poid"
           value={activity.series.poid}

@@ -1,0 +1,15 @@
+.loginBackground {
+    background-image: url("../../assets/images/bg-hakuna-matata.jpeg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 100vw;
+    height: 100vh;
+}
+
+.loginContainer {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%,-50%);
+}
+

@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+.scrollContainer{
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -42,3 +50,4 @@
   height: 50px;
   border-radius: 5px;
 }
+

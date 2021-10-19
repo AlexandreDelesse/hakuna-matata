@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { GrClose } from 'react-icons/gr'
+import { IoIosStats, IoIosFitness } from 'react-icons/io'
+
+import './activityCard.css'
+
 function ActivityCard(props) {
   const { activity, onDelete } = props
 
@@ -8,17 +13,23 @@ function ActivityCard(props) {
     onDelete(activity.id)
   }
   return (
-    <div className="m-2 border">
-      <div>{activity.exercice.label}</div>
+    <div className="p-2 rounded bg-light my-2 border position-relative">
+      <GrClose className="activity-close-icon" onClick={handleOnDelete} />
+      <div className='cardTitle'>{activity.exercice.label}</div>
       <div>
-        {activity.series && activity.series.map((serie) => (
-          <div>
-            repetitions: {serie.repetitions}
-            <div>poid : {serie.poid}</div>
-          </div>
-        ))}
+        {activity.series &&
+          activity.series.map((serie) => (
+            <div className='d-flex align-items-center'>
+              <div className='me-5'>
+                <IoIosStats className='me-2' />
+                {serie.repetitions}
+              </div>
+              <div>
+                <IoIosFitness className='me-2' /> {serie.poid}
+              </div>
+            </div>
+          ))}
       </div>
-      <button onClick={handleOnDelete}>delete</button>
     </div>
   )
 }

@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import { getUserId } from '../../store'
 
+import './activityForm.css'
+
 function ActivityForm(props) {
-  const { onCreate, exercices } = props
+  const { onCreate, exercices, isCreating } = props
 
   const userId = useSelector(getUserId)
 
@@ -29,21 +31,19 @@ function ActivityForm(props) {
     if (!exerciceId || !series.repetitions || !series.poid) {
       return
     }
-    setActivity({...activity, series: { repetitions: '', poid: ''}})
     onCreate(activity)
   }
 
   return (
-    <div className="d-flex justify-content-between">
+    <div className="d-flex justify-content-between align-items-end">
       <div className="d-flex flex-column">
-        <label className="form-label">Exercice</label>
         <select
-          className="form-control"
+          className="hm-input"
           name="exerciceId"
           value={activity.exerciceId}
           onChange={handleOnInputChanges}
         >
-          <option value="">Selectionner un exercice</option>
+          <option value="">Exercice</option>
           {exercices.map((exercice) => (
             <option key={exercice.id} value={exercice.id}>
               {exercice.label}
@@ -53,29 +53,28 @@ function ActivityForm(props) {
       </div>
 
       <div className="d-flex flex-column">
-        <label className="form-label">Repetitions</label>
         <input
           type="number"
-          className="form-control"
-          name="repetitions"
-          value={activity.series.repetitions}
-          onChange={handleOnInputSerieChange}
-        />
-      </div>
-
-      <div className="d-flex flex-column">
-        <label className="form-label">poid</label>
-        <input
-          type="number"
-          className="form-control"
+          className="hm-input"
           name="poid"
           value={activity.series.poid}
           onChange={handleOnInputSerieChange}
+          placeholder='poid'
+        />
+      </div>
+      <div className="d-flex flex-column">
+        <input
+          type="number"
+          className="hm-input"
+          name="repetitions"
+          value={activity.series.repetitions}
+          onChange={handleOnInputSerieChange}
+          placeholder='repetitions'
         />
       </div>
 
       <div className="d-flex flex-column justify-content-end">
-        <button className="btn btn-success" onClick={handleOnCreateActivity}>
+        <button className="btn btn-success" onClick={handleOnCreateActivity} disabled={isCreating} >
           Add
         </button>
       </div>
@@ -85,11 +84,13 @@ function ActivityForm(props) {
 
 ActivityForm.propTypes = {
   onCreate: PropTypes.func,
+  isCreating: PropTypes.bool,
   exercices: PropTypes.arrayOf(Object),
 }
 
 ActivityForm.defaultProps = {
   onCreate: () => {},
+  isCreating: false,
   exercices: [],
 }
 

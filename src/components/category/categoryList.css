@@ -1,0 +1,16 @@
+.categoryListContainer {
+  overflow-x: scroll;
+}
+
+.categoryItem {
+  min-width: 120px;
+  text-align: center;
+  font-size: medium;
+  cursor: pointer;
+  border: 2px solid rgb(214, 147, 70);
+}
+
+.categoryItemClicked {
+  background-color: rgb(214, 147, 70);
+  color: aliceblue;
+}

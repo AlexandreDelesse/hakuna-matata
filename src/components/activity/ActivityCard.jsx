@@ -5,6 +5,7 @@ import { GrClose } from 'react-icons/gr'
 import { IoIosStats, IoIosFitness } from 'react-icons/io'
 
 import './activityCard.css'
+import DateFormat from '../date/DateFormat'
 
 function ActivityCard(props) {
   const { activity, onDelete } = props
@@ -15,21 +16,22 @@ function ActivityCard(props) {
   return (
     <div className="p-2 rounded bg-light my-2 border position-relative">
       <GrClose className="activity-close-icon" onClick={handleOnDelete} />
-      <div className='cardTitle'>{activity.exercice.label}</div>
+      <div className="cardTitle">{activity.exercice.label}</div>
       <div>
         {activity.series &&
           activity.series.map((serie) => (
-            <div className='d-flex align-items-center'>
-              <div className='me-5'>
-                <IoIosStats className='me-2' />
+            <div className="d-flex align-items-center">
+              <div className="me-5">
+                <IoIosStats className="me-2" />
                 {serie.repetitions}
               </div>
               <div>
-                <IoIosFitness className='me-2' /> {serie.poid}
+                <IoIosFitness className="me-2" /> {serie.poid}
               </div>
             </div>
           ))}
       </div>
+      <DateFormat isoDate={activity.createdAt} className="activityDate" />
     </div>
   )
 }

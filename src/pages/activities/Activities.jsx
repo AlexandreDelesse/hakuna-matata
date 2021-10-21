@@ -64,6 +64,7 @@ function Activities(props) {
     }
   }
 
+
   if (queryActivity.isLoading) {
     return <div>This is a spinner</div>
   }
@@ -71,6 +72,8 @@ function Activities(props) {
   if (queryActivity.isError) {
     return <div>An error occured </div>
   }
+
+  
 
   return (
     <div className="p-4">

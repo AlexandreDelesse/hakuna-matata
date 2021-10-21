@@ -1,0 +1,7 @@
+.hm-input {
+    border: none;
+    width: 100px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    outline: none;
+}

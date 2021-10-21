@@ -10,3 +10,11 @@
   .cardTitle {
       font-size: x-large;
   }
+
+  .activityDate {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      color: darkgray;
+      font-size: small;
+  }

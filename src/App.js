@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -15,6 +14,8 @@ import Login from './pages/login/Login'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import Activities from './pages/activities/Activities'
+import Timer from './components/timer/Timer'
+import Workout from './pages/workout/Workout'
 
 function App() {
   const queryClient = new QueryClient()
@@ -36,9 +37,18 @@ function App() {
               <Home />
             </Route>
 
+            <Route path="/timer">
+              <Timer />
+            </Route>
+
             <Route path="/foodstuffs">
               <Foodstuffs />
             </Route>
+
+            <Route path="/workout">
+              <Workout />
+            </Route>
+
             <Route path="/activities">
               <Activities />
             </Route>

@@ -27,4 +27,14 @@ const deleteExerciceById = async (exerciceId) => {
   }
 }
 
-export { createExercice, getAllExercices, deleteExerciceById }
+const getAllCategories = async () => {
+  try {
+    const result = await api.get('/exercices/categories')
+    return result.data
+  } catch (err) {
+    console.log(err)
+    return []
+  }
+}
+
+export { createExercice, getAllExercices, deleteExerciceById, getAllCategories }

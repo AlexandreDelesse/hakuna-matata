@@ -1,9 +1,8 @@
 import api from './api.config'
 
-
 const createActivity = async (activity) => {
   try {
-    const result = await api.post('/activities', activity)
+    await api.post('/activities', activity)
   } catch (err) {
     console.log(err)
   }
@@ -12,7 +11,7 @@ const createActivity = async (activity) => {
 const getAllActivities = async (queryKey) => {
   const userId = queryKey.queryKey[1]
   try {
-    const result = await api.get('/activities', { params: {userId}})
+    const result = await api.get('/activities', { params: { userId } })
     return result.data
   } catch (err) {
     console.log(err)

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { IoFastFood } from 'react-icons/io5'
 
 import './iconComponent.css'
 

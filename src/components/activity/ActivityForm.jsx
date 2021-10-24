@@ -55,11 +55,12 @@ function ActivityForm(props) {
       <div className="d-flex flex-column">
         <input
           type="number"
+          inputMode="numeric"
           className="hm-input"
           name="poid"
           value={activity.series.poid}
           onChange={handleOnInputSerieChange}
-          placeholder='poid'
+          placeholder="poid"
         />
       </div>
       <div className="d-flex flex-column">
@@ -69,12 +70,16 @@ function ActivityForm(props) {
           name="repetitions"
           value={activity.series.repetitions}
           onChange={handleOnInputSerieChange}
-          placeholder='repetitions'
+          placeholder="repetitions"
         />
       </div>
 
       <div className="d-flex flex-column justify-content-end">
-        <button className="btn btn-success" onClick={handleOnCreateActivity} disabled={isCreating} >
+        <button
+          className="btn btn-success"
+          onClick={handleOnCreateActivity}
+          disabled={isCreating}
+        >
           Add
         </button>
       </div>

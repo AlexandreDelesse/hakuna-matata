@@ -2,7 +2,7 @@ import api from './api.config'
 
 const createExercice = async (exercice) => {
   try {
-    const result = await api.post('/exercices', exercice)
+    await api.post('/exercices', exercice)
   } catch (err) {
     console.log(err)
   }

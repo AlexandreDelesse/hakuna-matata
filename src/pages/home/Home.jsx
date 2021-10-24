@@ -4,15 +4,15 @@ import IconComponent from '../../components/iconComponent/IconComponent'
 import { IoFastFood } from 'react-icons/io5'
 import { IoIosFitness } from 'react-icons/io'
 
-import { useDispatch } from 'react-redux'
-import { setUserId } from '../../store'
+// import { useDispatch } from 'react-redux'
+// import { setUserId } from '../../store'
 
 import '../../fonts/HakunaMatata.ttf'
 import './home.css'
 
 export default function Home() {
   const history = useHistory()
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const handleOnIconClick = (label) => {
     history.push(`/${label}`)

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, {  useState } from 'react'
+// import PropTypes from 'prop-types'
 
 import BackButton from '../../components/buttons/backButtons/BackButton'
-import SearchBar from '../../components/searcBar/SearchBar'
+// import SearchBar from '../../components/searcBar/SearchBar'
 import ActivityCard from '../../components/activity/ActivityCard'
 
 import { useHistory } from 'react-router'

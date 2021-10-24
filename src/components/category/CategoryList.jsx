@@ -21,7 +21,7 @@ export default function CategoryList(props) {
 
   useEffect(()=>{
     onCategoriesSelectedChanges(categoryList)
-  }, [categoryList])
+  }, [categoryList, onCategoriesSelectedChanges])
 
 
   return (

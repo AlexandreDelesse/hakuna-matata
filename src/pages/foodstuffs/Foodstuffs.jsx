@@ -68,7 +68,7 @@ export default function Foodstuffs() {
     if (query.isSuccess) {
       setDataFiltered(query.data)
     }
-  }, [query.data])
+  }, [query])
 
   if (query.isLoading) {
     return (

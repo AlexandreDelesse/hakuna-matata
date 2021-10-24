@@ -2,7 +2,7 @@ import api from './api.config'
 
 const createFoodstuff = async (foodstuff) => {
   try {
-    const result = await api.post('/foodstuffs', foodstuff)
+    await api.post('/foodstuffs', foodstuff)
   } catch (err) {
     console.log(err)
   }

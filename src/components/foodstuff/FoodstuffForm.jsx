@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { Toast } from 'react-bootstrap'
-
 function FoodstuffForm(props) {
   const { onCreate, onCancel } = props
 

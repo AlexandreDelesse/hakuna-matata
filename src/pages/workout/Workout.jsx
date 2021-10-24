@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import { Spinner } from 'reactstrap'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+// import { Spinner } from 'reactstrap'
+// import PropTypes from 'prop-types'
 
 import BackButton from '../../components/buttons/backButtons/BackButton'
-import SearchBar from '../../components/searcBar/SearchBar'
-import ActivityCard from '../../components/activity/ActivityCard'
+// import SearchBar from '../../components/searcBar/SearchBar'
+// import ActivityCard from '../../components/activity/ActivityCard'
 import ActivityForm from '../../components/activity/ActivityForm'
 import CategoryList from '../../components/category/CategoryList'
 
 import { useHistory } from 'react-router'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 
 import { createActivity } from '../../services/activities.service'
 import { getAllExercices } from '../../services/exercices.service'
 import { getAllCategories } from '../../services/exercices.service'
 
-import { getUserId } from '../../store'
+// import { getUserId } from '../../store'
 
 import Timer from '../../components/timer/Timer'
 
 function Workout(props) {
   const queryClient = useQueryClient()
   const history = useHistory()
-  const userId = useSelector(getUserId)
+  // const userId = useSelector(getUserId)
   const queryCategory = useQuery(['categories'], getAllCategories)
   const queryExercice = useQuery('exercices', getAllExercices)
 
@@ -74,10 +74,11 @@ function Workout(props) {
         )}
         <ActivityForm
           onCreate={handleOnCreateActivity}
-          exercices={queryExercice.data.filter((exercice) =>
-            !categoryList.some((category) =>
-              !exercice.category.includes(category),
-            ),
+          exercices={queryExercice.data.filter(
+            (exercice) =>
+              !categoryList.some(
+                (category) => !exercice.category.includes(category),
+              ),
           )}
           isCreating={mutationCreate.isLoading}
         />

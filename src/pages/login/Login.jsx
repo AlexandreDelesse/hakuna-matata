@@ -5,6 +5,8 @@ import { setUserId } from '../../store'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 
+import packageJson from '../../../package.json'
+
 import './login.css'
 
 export default function Login() {
@@ -25,6 +27,9 @@ export default function Login() {
   }
   return (
     <div className="loginBackground">
+      <div className="position-absolute top-0 left-0 fs-6 fw-light ms-1">
+        v{packageJson.version}
+      </div>
       <div className="d-flex justify-content-center align-items-center loginContainer border rounded p-4">
         <div>
           <label>Username</label>

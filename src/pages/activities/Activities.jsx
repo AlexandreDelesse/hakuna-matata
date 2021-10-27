@@ -79,7 +79,7 @@ function Activities(props) {
     <div className="p-4">
       <BackButton onClick={handleOnBackButtonClick} label="Back to menu" />
 
-      <div className="text-center display-5 my-4">foodstuffs</div>
+      <div className="text-center display-5 my-4">Activities</div>
 
       <div className="d-flex flex-column justify-content-between my-5">
         {/* <SearchBar

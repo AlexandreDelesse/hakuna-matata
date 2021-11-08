@@ -1,0 +1,25 @@
+.profileCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.profileCardImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  transition: transform 0.25s ease-out;
+}
+
+.profileCardImage:hover {
+  transform: scale(1.1);
+  border: 2px solid mediumblue;
+}
+
+.profileCardLabel {
+  font-size: x-large;
+}

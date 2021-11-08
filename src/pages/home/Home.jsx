@@ -4,11 +4,15 @@ import IconComponent from '../../components/iconComponent/IconComponent'
 import { IoFastFood } from 'react-icons/io5'
 import { IoIosFitness } from 'react-icons/io'
 
+import { getUser } from '../../redux/userRedux'
+
 // import { useDispatch } from 'react-redux'
 // import { setUserId } from '../../store'
 
 import '../../fonts/HakunaMatata.ttf'
 import './home.css'
+import ProfileMenuCard from '../../components/profile/profileMenuCard/ProfileMenuCard'
+import { useSelector } from 'react-redux'
 
 export default function Home() {
   const history = useHistory()
@@ -18,8 +22,11 @@ export default function Home() {
     history.push(`/${label}`)
   }
 
+  const user = useSelector(getUser)
+
   return (
-    <div className="p-4">
+    <div className="p-4 position-relative">
+      <ProfileMenuCard user={user.id} />
       <div className="mb-4 mt-3 display-6 text-center homeTitle">
         * Hakuna matata %
       </div>

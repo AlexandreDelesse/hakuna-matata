@@ -1,44 +1,50 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+
+import * as ExerciceService from '../services/exercices.service'
 
 const useGetExercices = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await ExerciceService.getExercices();
+        const result = await ExerciceService.getAllExercices()
         dispatch({
-          type: "app/exercices",
+          type: 'app/exercices',
           data: result,
-        });
+        })
       } catch (err) {
-        throw err;
+        throw err
       }
     }
-    fetchData();
-  });
-};
+    fetchData()
+  })
+}
 
 const addExerciceSelected = (id) => {
   return {
-    type: "app/exercicesSelected/add",
+    type: 'app/exercicesSelected/add',
     data: id,
-  };
-};
+  }
+}
 
-const getExercices = (state) => state.exercices;
+const getExercices = (state) => state.exercices
 
-const getExercicesSelected = (state) => state.exercicesSelected;
+const getExercicesSelected = (state) => state.exercicesSelected
 
 const getExerciceFromExerciceId = (exerciceId) => {
-  const exercices = getExercices();
-  const exercice = exercices.find((exercice) => exercice.id === exerciceId);
-  return exercice;
-};
+  const exercices = getExercices()
+  const exercice = exercices.find((exercice) => exercice.id === exerciceId)
+  return exercice
+}
+
+const getUser = (state) => state.user
+
 export {
   getExercices,
   getExerciceFromExerciceId,
   getExercicesSelected,
   useGetExercices,
   addExerciceSelected,
-};
+  getUser,
+}

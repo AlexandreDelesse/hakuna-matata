@@ -17,8 +17,6 @@ export default function Login() {
   const users = ['alexandre', 'alexia']
 
   const handleOnProfileClick = (user) => {
-    console.log('click')
-    console.log(user)
     if (!user) return
     dispatch(setUserId(user))
     history.push('/home')

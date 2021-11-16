@@ -25,7 +25,7 @@ export default function Login() {
   return (
     <div className="loginBackground">
       <div className="position-absolute top-0 left-0 fs-6 fw-light ms-1">
-        v{packageJson.version} nom : {packageJson.name}
+        v{packageJson.version}
       </div>
       <div className="d-flex justify-content-center align-items-center loginContainer ">
         {users.map((user) => (

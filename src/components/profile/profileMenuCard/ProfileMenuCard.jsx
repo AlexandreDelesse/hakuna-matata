@@ -6,13 +6,17 @@ import profilePlaceholder from '../../../assets/images/male-placeholder-image.jp
 import './profileMenuCard.css'
 
 function ProfileMenuCard(props) {
-  const { user, className } = props
+  const { user, className, onClick } = props
+
+  const handleOnImageClick = () => {
+    onClick()
+  }
 
   return (
     <div className={`profileMenuCardContainer ${className}`}>
       <div className="profileMenuCardLabel me-2">{user}</div>
       <img
-        // onClick={handleOnImageClick}
+        onClick={handleOnImageClick}
         src={profilePlaceholder}
         alt=""
         className="profileMenuCardImage"
@@ -24,10 +28,12 @@ function ProfileMenuCard(props) {
 ProfileMenuCard.propTypes = {
   user: PropTypes.string.isRequired,
   className: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 ProfileMenuCard.defaultProps = {
   className: '',
+  onClick: () => {},
 }
 
 export default ProfileMenuCard

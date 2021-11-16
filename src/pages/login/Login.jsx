@@ -29,12 +29,7 @@ export default function Login() {
       </div>
       <div className="d-flex justify-content-center align-items-center loginContainer ">
         {users.map((user) => (
-          <ProfileCard
-            key={user}
-            user={user}
-            className="mx-4"
-            onClick={handleOnProfileClick}
-          />
+          <div>{user.label}</div>
         ))}
       </div>
     </div>

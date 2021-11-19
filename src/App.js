@@ -16,6 +16,7 @@ import './App.css'
 import Activities from './pages/activities/Activities'
 import Timer from './components/timer/Timer'
 import Workout from './pages/workout/Workout'
+import Exercices from './pages/exercices/Exercices'
 
 function App() {
   const queryClient = new QueryClient()
@@ -51,6 +52,10 @@ function App() {
 
             <Route path="/activities">
               <Activities />
+            </Route>
+
+            <Route path="/exercices" >
+              <Exercices />
             </Route>
           </Switch>
         </div>

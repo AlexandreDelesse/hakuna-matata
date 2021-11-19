@@ -58,6 +58,13 @@ export default function Home() {
           icon={<IoIosFitness width="80px" height="80px" />}
           className="m-2"
         />
+
+        <IconComponent
+          onClick={handleOnIconClick}
+          appName="exercices"
+          icon={<IoIosFitness width="80px" height="80px" />}
+          className="m-2"
+        />
       </div>
     </div>
   )

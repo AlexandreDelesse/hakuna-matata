@@ -57,6 +57,8 @@ function Exercices(props) {
   return (
     <div className="p-4">
       <BackButton onClick={handleOnBackButtonClick} label="Back to menu" />
+
+      <div className="text-center display-5 my-4">Exercices</div>
     </div>
   )
 }

@@ -7,7 +7,7 @@ function ExerciceForm(props) {
 
   const [exercice, setExercice] = useState({
     label: '',
-    categories: [],
+    category: [],
   })
 
   const handleOnLabelChanges = (e) => {
@@ -16,15 +16,15 @@ function ExerciceForm(props) {
   }
 
   const handleOnCreateExercice = () => {
-    const { label, categories } = exercice
-    if (!label | !categories.length) {
+    const { label, category } = exercice
+    if (!label | !category.length) {
       return
     }
     onCreate(exercice)
   }
 
-  const handleOnCategoriesChange = (categories) => {
-    setExercice({ ...exercice, categories })
+  const handleOnCategoriesChange = (category) => {
+    setExercice({ ...exercice, category })
   }
 
   const onAddedCategory = () => [setExercice({ ...exercice, label: '' })]

@@ -37,7 +37,7 @@ export default function Home() {
       <div className="mb-4 mt-3 display-6 text-center homeTitle">
         * Hakuna matata %
       </div>
-      <div className="mt-5 d-flex">
+      <div className="mt-5 d-flex flex-wrap">
         <IconComponent
           onClick={handleOnIconClick}
           appName="foodstuffs"

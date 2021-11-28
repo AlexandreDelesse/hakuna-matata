@@ -18,7 +18,7 @@ function ExerciceList(props) {
             <GrClose onClick={() => handleOnDeleteExercice(exercice)} />
           </div>
           <div>
-            {exercice.categories.map((category) => (
+            {exercice.category.map((category) => (
               <div className="ms-2 rounded  p-2">{category}</div>
             ))}
           </div>

@@ -13,7 +13,7 @@ function CategoriesSelector(props) {
 
   useEffect(() => {
     onCategoriesChanged(categories)
-  }, [categories])
+  }, [categories, onCategoriesChanged])
 
   const handleOnChangeNewCategory = (e) => {
     setNewCategory(e.target.value)

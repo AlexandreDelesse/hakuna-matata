@@ -13,11 +13,11 @@ import '../../fonts/HakunaMatata.ttf'
 import './home.css'
 import ProfileMenuCard from '../../components/profile/profileMenuCard/ProfileMenuCard'
 import { useSelector } from 'react-redux'
-import UserMenu from '../../components/menu/userMenu/UserMenu'
+// import UserMenu from '../../components/menu/userMenu/UserMenu'
 
 export default function Home() {
   const history = useHistory()
-  const userMenuLabels = ['Exercices', 'Preferences']
+  // const userMenuLabels = ['Exercices', 'Preferences']
   // const dispatch = useDispatch()
 
   const handleOnIconClick = (label) => {

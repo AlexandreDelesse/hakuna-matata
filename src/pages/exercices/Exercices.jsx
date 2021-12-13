@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 
 // Componenents
 import BackButton from '../../components/buttons/backButtons/BackButton'
-import ActivityForm from '../../components/activity/ActivityForm'
+// import ActivityForm from '../../components/activity/ActivityForm'
 
 // Hooks
 import { useHistory } from 'react-router'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import {
   createExercice,
   getAllExercices,
@@ -16,7 +16,7 @@ import {
 } from '../../services/exercices.service'
 
 // Functions
-import { getUserId } from '../../store'
+// import { getUserId } from '../../store'
 import ExerciceForm from '../../components/exercice/ExerciceForm'
 import ExerciceList from '../../components/exercice/ExerciceList'
 
@@ -25,7 +25,7 @@ import ExerciceList from '../../components/exercice/ExerciceList'
 function Exercices(props) {
   const queryClient = useQueryClient()
   const history = useHistory()
-  const userId = useSelector(getUserId)
+  // const userId = useSelector(getUserId)
 
   const [isExerciceFormOpen, setIsExerciceFormOpen] = useState(false)
   //   const queryActivity = useQuery(['activities', userId], getAllActivities)

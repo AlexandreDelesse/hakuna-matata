@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import CategoriesSelector from './CategoriesSelector'
 
 function ExerciceForm(props) {
-  const { onCreate, exercices, isCreating } = props
+  const { onCreate, isCreating } = props
 
   const [exercice, setExercice] = useState({
     label: '',
@@ -27,7 +27,7 @@ function ExerciceForm(props) {
     setExercice({ ...exercice, category })
   }
 
-  const onAddedCategory = () => [setExercice({ ...exercice, label: '' })]
+  // const onAddedCategory = () => [setExercice({ ...exercice, label: '' })]
 
   return (
     <div className="d-flex flex-column  align-items-center rounded bg-light p-2">

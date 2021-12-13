@@ -33,9 +33,9 @@ export default function Home() {
   return (
     <div className="p-4 position-relative">
       <ProfileMenuCard user={user.id} onClick={handleOnProfileIconClick} />
-      <UserMenu className="position-absolute" labels={userMenuLabels} />
-      <div className="mb-4 mt-3 display-6 text-center homeTitle">
-        * Hakuna matata %
+      {/* <UserMenu className="position-absolute" labels={userMenuLabels} /> */}
+      <div className="mb-4 mt-3 display-6">
+        Hakuna matata
       </div>
       <div className="mt-5 d-flex flex-wrap">
         <IconComponent

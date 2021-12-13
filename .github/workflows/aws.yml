@@ -36,7 +36,7 @@ env:
   ECR_REPOSITORY: hakuna-api           # set this to your Amazon ECR repository name
   ECS_SERVICE: hakuna-api-service                 # set this to your Amazon ECS service name
   ECS_CLUSTER: hakuna-api-cluster                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: ./awsTaskDefinition.json # set this to the path to your Amazon ECS task definition
+  ECS_TASK_DEFINITION: ../../awsTaskDefinition.json # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: sample-app           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
